@@ -1,0 +1,53 @@
+basePath: /
+definitions:
+  models.Book:
+    properties:
+      author:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: This is a sample server server.
+  title: Gin Swagger Example API
+  version: "1.0"
+paths:
+  /book:
+    get:
+      description: Takes a book JSON and store in DB. Return saved JSON.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Get all book
+      tags:
+      - books
+    post:
+      description: Takes a book JSON and store in DB. Return saved JSON.
+      parameters:
+      - description: Book JSON
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/models.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Store a new book
+      tags:
+      - books
+schemes:
+- http
+swagger: "2.0"
